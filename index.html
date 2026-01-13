@@ -1,47 +1,106 @@
 <!DOCTYPE html>
 <html lang="bg">
+
 <head>
-<meta charset="UTF-8">
-<title>DualPay Calculator</title>
+  <meta charset="UTF-8">
+  <title>DualPay Calculator</title>
+
+  <style>
+    body {
+      background-color: #f2f4f8;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      max-width: 350px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    p {
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3a55d4;
+    }
+
+    #result {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
 
-<h2>DualPay Calculator</h2>
+    <h2>DualPay Calculator</h2>
 
-<p>Дължима сума (в евро):</p>
-<input type="number" id="due">
+    <p>Дължима сума (в евро):</p>
+    <input type="number" id="due">
 
-<p>Платено в евро:</p>
-<input type="number" id="eur">
+    <p>Платено в евро:</p>
+    <input type="number" id="eur">
 
-<p>Платено в лева:</p>
-<input type="number" id="bgn">
+    <p>Платено в лева:</p>
+    <input type="number" id="bgn">
 
-<br><br>
-<button onclick="calc()">Изчисли</button>
+    <button onclick="calc()">Изчисли</button>
 
-<p id="result"></p>
+    <p id="result"></p>
 
-<script>
-function calc() {
-  const rate = 1.95583;
+    <script>
+      function calc() {
+        const rate = 1.95583;
 
-  let due = Number(document.getElementById("due").value);
-  let eur = Number(document.getElementById("eur").value);
-  let bgn = Number(document.getElementById("bgn").value);
+        let due = Number(document.getElementById("due").value);
+        let eur = Number(document.getElementById("eur").value);
+        let bgn = Number(document.getElementById("bgn").value);
 
-  let paid = eur + (bgn / rate);
-  let change = paid - due;
+        let paid = eur + (bgn / rate);
+        let change = paid - due;
 
-  if (change >= 0) {
-    document.getElementById("result").innerText =
-      "Ресто: " + change.toFixed(2) + " евро";
-  } else {
-    document.getElementById("result").innerText =
-      "Недостатъчно пари";
-  }
-}
-</script>
+        if (change >= 0) {
+          document.getElementById("result").innerText =
+            "Ресто: " + change.toFixed(2) + " евро";
+        } else {
+          document.getElementById("result").innerText =
+            "Недостатъчно пари";
+        }
+      }
+    </script>
 
+  </div>
 </body>
+
 </html>
+
