@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<title>DualPay Calculator</title>
+</head>
+<body>
+
+<h2>DualPay Calculator</h2>
+
+<p>Дължима сума (в евро):</p>
+<input type="number" id="due">
+
+<p>Платено в евро:</p>
+<input type="number" id="eur">
+
+<p>Платено в лева:</p>
+<input type="number" id="bgn">
+
+<br><br>
+<button onclick="calc()">Изчисли</button>
+
+<p id="result"></p>
+
+<script>
+function calc() {
+  const rate = 1.95583;
+
+  let due = Number(document.getElementById("due").value);
+  let eur = Number(document.getElementById("eur").value);
+  let bgn = Number(document.getElementById("bgn").value);
+
+  let paid = eur + (bgn / rate);
+  let change = paid - due;
+
+  if (change >= 0) {
+    document.getElementById("result").innerText =
+      "Ресто: " + change.toFixed(2) + " евро";
+  } else {
+    document.getElementById("result").innerText =
+      "Недостатъчно пари";
+  }
+}
+</script>
+
+</body>
+</html>
